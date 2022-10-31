@@ -3,7 +3,7 @@ import throttle from 'lodash.throttle';
 const STORAGE_KEY = 'feedback-form-state';
 const formData = {};
 
-refs = {
+const refs = {
     form: document.querySelector('.feedback-form'),
     formTextarea: document.querySelector('.feedback-form textarea'),
     formEmail: document.querySelector('.feedback-form input')
