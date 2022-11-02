@@ -19,7 +19,6 @@ populateForm();
 
 function onFormSubmit(event) {
     event.preventDefault();
-    console.log('Message was sent');
     console.log(formData);
     event.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
