@@ -5,9 +5,12 @@ const formData = {};
 
 const refs = {
     form: document.querySelector('.feedback-form'),
-    formTextarea: document.querySelector('.feedback-form textarea'),
-    formEmail: document.querySelector('.feedback-form input')
+    formEmail: document.querySelector('.feedback-form input'),
+    formTextarea: document.querySelector('.feedback-form textarea')
 }
+
+refs.formTextarea.required = true;
+refs.formEmail.required = true;
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onFormInput, 500));
@@ -17,6 +20,7 @@ populateForm();
 function onFormSubmit(event) {
     event.preventDefault();
     console.log('Message was sent');
+    console.log(formData);
     event.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
 }
@@ -32,7 +36,6 @@ function populateForm() {
     const savedFormData = JSON.parse(savedFormDataJSON);
 
     if (savedFormDataJSON) {
-        console.log(savedFormData);
         refs.formEmail.value = savedFormData.email;
         refs.formTextarea.value = savedFormData.message;
     }
